@@ -1,0 +1,54 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f7fa; /* Fondo de color suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #43a047;
+  }
+  
+  #quiz-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Aumentamos el tamaño máximo */
+    width: 100%;
+  }
+  
+  #choices-container .col {
+    margin-bottom: 15px;
+    width: 100%; /* Asegura que los botones ocupen todo el ancho */
+  }
+  
+  button {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 1.2rem; /* Aumentamos el tamaño de la fuente */
+  }
+  
+  #next-btn {
+    background-color: #00796b; /* Color del botón */
+    margin-top: 30px;
+  }
+  
+  #result-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #result-container h2 {
+    color: #00796b;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  
