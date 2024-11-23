@@ -10,22 +10,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="quiz-background">
-    <div class="container">
-      <div id="quiz-container" class="center-align">
-        <h1>Quiz de Finanzas Personales</h1>
-        <div id="question-container"></div>
-        <div id="choices-container" class="row"></div>
-        <button id="next-btn" class="btn waves-effect waves-light hide" onclick="nextQuestion()">Siguiente</button>
-      </div>
-      <div id="result-container" class="center-align hide">
-        <h2>Tu Calificación:</h2>
-        <p id="score"></p>
-        <button class="btn waves-effect waves-light" onclick="restartQuiz()">Reiniciar Quiz</button>
-      </div>
+  <!-- Canvas para el modelo 3D -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="container">
+    <div id="quiz-container" class="center-align">
+      <h1>Quiz de Finanzas Personales</h1>
+      <div id="question-container" class="card-panel teal lighten-4"></div>
+      <div id="choices-container" class="row"></div>
+      <button id="next-btn" class="btn waves-effect waves-light" onclick="nextQuestion()">Siguiente</button>
+    </div>
+    <div id="result-container" class="center-align hide">
+      <h2>Tu calificación:</h2>
+      <p id="score"></p>
+      <button class="btn waves-effect waves-light" onclick="restartQuiz()">Reiniciar quiz</button>
     </div>
   </div>
 
+  <!-- Cargar Three.js y el script de animación -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="quiz.js"></script>
+  <script src="background.js"></script>
 </body>
 </html>

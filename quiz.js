@@ -1,91 +1,72 @@
-const quizData = [
-    {
-      question: "¿Qué es un presupuesto?",
-      options: [
-        "Una herramienta para gastar más",
-        "Un plan para ahorrar dinero",
-        "Una cuenta de banco especial",
-        "Un préstamo a largo plazo"
+const questions = [
+  {
+      question: "¿Cuál es la regla del 50/30/20?",
+      choices: [
+          "50% necesidades, 30% deseos, 20% ahorro",
+          "50% ahorro, 30% inversiones, 20% gastos",
+          "50% gastos, 30% ahorro, 20% deseos",
+          "50% deseos, 30% necesidades, 20% ahorro"
       ],
-      correct: 1
-    },
-    {
-      question: "¿Qué es el interés compuesto?",
-      options: [
-        "Interés que pagas una sola vez",
-        "Interés sobre el capital inicial y acumulado",
-        "Interés que no cambia",
-        "Un tipo de impuesto"
+      answer: 0
+  },
+  {
+      question: "¿Qué es un fondo de emergencia?",
+      choices: [
+          "Dinero para gastar en vacaciones",
+          "Ahorros para gastos inesperados",
+          "Inversiones en la bolsa",
+          "Gastos mensuales"
       ],
-      correct: 1
-    },
-    {
-      question: "¿Qué significa diversificar tus inversiones?",
-      options: [
-        "Invertir todo en una sola acción",
-        "Distribuir el dinero en diferentes activos",
-        "Invertir en el banco",
-        "Guardar todo el dinero en efectivo"
-      ],
-      correct: 1
-    },
-    // Agrega más preguntas según sea necesario
-  ];
-  
-  let currentQuestion = 0;
-  let score = 0;
-  
-  const questionContainer = document.getElementById('question-container');
-  const choicesContainer = document.getElementById('choices-container');
-  const nextBtn = document.getElementById('next-btn');
-  const resultContainer = document.getElementById('result-container');
-  const scoreDisplay = document.getElementById('score');
-  
-  function loadQuestion() {
-    questionContainer.textContent = quizData[currentQuestion].question;
-    choicesContainer.innerHTML = '';
-    
-    quizData[currentQuestion].options.forEach((option, index) => {
-      const optionElement = document.createElement('div');
-      optionElement.classList.add('col', 's12', 'm6');
-      optionElement.innerHTML = `
-        <button class="btn-large waves-effect waves-light" onclick="selectAnswer(${index})">${option}</button>
-      `;
-      choicesContainer.appendChild(optionElement);
-    });
-  }
-  
-  function selectAnswer(selected) {
-    if (selected === quizData[currentQuestion].correct) {
+      answer: 1
+  },
+  // Agrega más preguntas aquí
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function showQuestion() {
+  const currentQuestion = questions[currentQuestionIndex];
+  document.getElementById("question-container").innerText = currentQuestion.question;
+
+  const choicesContainer = document.getElementById("choices-container");
+  choicesContainer.innerHTML = ""; // Limpiar las opciones anteriores
+
+  currentQuestion.choices.forEach((choice, index) => {
+      const button = document.createElement("button");
+      button.innerText = choice;
+      button.classList.add("btn", "waves-effect", "waves-light");
+      button.onclick = () => selectAnswer(index);
+      choicesContainer.appendChild(button);
+  });
+}
+
+function selectAnswer(index) {
+  if (index === questions[currentQuestionIndex].answer) {
       score++;
-    }
-    nextBtn.classList.remove('hide');
   }
-  
-  function nextQuestion() {
-    currentQuestion++;
-    nextBtn.classList.add('hide');
-  
-    if (currentQuestion < quizData.length) {
-      loadQuestion();
-    } else {
-      showResults();
-    }
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+      showQuestion();
+  } else {
+      showResult();
   }
-  
-  function showResults() {
-    document.getElementById('quiz-container').classList.add('hide');
-    resultContainer.classList.remove('hide');
-    scoreDisplay.textContent = `${score} / ${quizData.length}`;
-  }
-  
-  function restartQuiz() {
-    currentQuestion = 0;
-    score = 0;
-    resultContainer.classList.add('hide');
-    document.getElementById('quiz-container').classList.remove('hide');
-    loadQuestion();
-  }
-  
-  loadQuestion();
-  
+}
+
+function showResult() {
+  document.getElementById("quiz-container").classList.add("hide");
+  const resultContainer = document.getElementById("result-container");
+  resultContainer.classList.remove("hide");
+  document.getElementById("score").innerText = `Has acertado ${score} de ${questions.length} preguntas.`;
+}
+
+function restartQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  document.getElementById("result-container").classList.add("hide");
+  document.getElementById("quiz-container").classList.remove("hide");
+  showQuestion();
+}
+
+// Iniciar el quiz mostrando la primera pregunta
+showQuestion();
