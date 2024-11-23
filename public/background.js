@@ -13,6 +13,10 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load('character.gltf', (gltf) => {
         model = gltf.scene;
+        
+        // Escalar el modelo a un tamaño más pequeño
+        model.scale.set(0.020, 0.020, 0.020); // Escalar a 1/20 del tamaño original
+        
         scene.add(model);
         model.position.set(0, -1, 0); // Ajustar la posición del modelo si es necesario
     }, undefined, function (error) {

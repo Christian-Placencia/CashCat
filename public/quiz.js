@@ -70,3 +70,9 @@ function restartQuiz() {
 
 // Iniciar el quiz mostrando la primera pregunta
 showQuestion();
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Initialize Firestore
+const db = firebase.firestore();
