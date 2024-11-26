@@ -11,53 +11,16 @@
 </head>
 <body>
   <canvas id="bg-canvas"></canvas>
-
-  <!-- Auth Container -->
-  <div id="auth-container" class="container center-align">
-    <button id="loginBtn" class="btn waves-effect waves-light">
-      <i class="material-icons left">account_circle</i>
-      Iniciar sesión con Google
-    </button>
-  </div>
-
-  <!-- User Profile Container (initially hidden) -->
-  <div id="profile-container" class="container center-align" style="display: none;">
-    <div class="card">
-      <div class="card-content">
-        <img id="userPhoto" class="circle responsive-img" style="width: 100px;" />
-        <h4 id="userName"></h4>
-        <p id="userEmail"></p>
-        <button id="logoutBtn" class="btn red waves-effect waves-light">
-          <i class="material-icons left">exit_to_app</i>
-          Cerrar sesión
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quiz Container (initially hidden) -->
-  <div id="quiz-container" class="container center-align" style="display: none;">
-    <div id="quiz-container" class="center-align">
-      <h1>Quiz de Finanzas Personales</h1>
-      <div id="question-container" class="card-panel teal lighten-4"></div>
-      <div id="choices-container" class="row"></div>
-      <button id="next-btn" class="btn waves-effect waves-light" onclick="nextQuestion()">Siguiente</button>
-    </div>
-    <div id="result-container" class="center-align hide">
-      <h2>Tu calificación:</h2>
-      <p id="score"></p>
-      <button class="btn waves-effect waves-light" onclick="restartQuiz()">Reiniciar quiz</button>
-    </div>
-  </div>
+  
+  <!-- Root element for React app -->
+  <div id="root"></div>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-  
-  <!-- Your scripts -->
-  <script src="google-authentication.js" type="module"></script>
+
+  <!-- Background animation script -->
   <script src="background.js"></script>
-  <script src="quiz.js"></script>
 </body>
 </html>
