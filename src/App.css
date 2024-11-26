@@ -11,4 +11,19 @@ body {
     height: 100%;
     z-index: -1; /* Asegúrate de que el canvas esté detrás del contenido */
   }
-  
+
+#auth-container {
+    margin-top: 2rem;
+}
+
+#profile-container {
+    margin-top: 2rem;
+}
+
+.card {
+    padding: 1rem;
+}
+
+#userPhoto {
+    margin: 1rem auto;
+}

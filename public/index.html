@@ -10,15 +10,33 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Canvas para el modelo 3D -->
-  <canvas id="bg-canvas"></canvas>  <!-- Firebase App (the core Firebase SDK) -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <!-- Firebase Firestore -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-  <script src="quiz.js"></script>
-  <script src="background.js"></script>
+  <canvas id="bg-canvas"></canvas>
 
-  <div class="container">
+  <!-- Auth Container -->
+  <div id="auth-container" class="container center-align">
+    <button id="loginBtn" class="btn waves-effect waves-light">
+      <i class="material-icons left">account_circle</i>
+      Iniciar sesión con Google
+    </button>
+  </div>
+
+  <!-- User Profile Container (initially hidden) -->
+  <div id="profile-container" class="container center-align" style="display: none;">
+    <div class="card">
+      <div class="card-content">
+        <img id="userPhoto" class="circle responsive-img" style="width: 100px;" />
+        <h4 id="userName"></h4>
+        <p id="userEmail"></p>
+        <button id="logoutBtn" class="btn red waves-effect waves-light">
+          <i class="material-icons left">exit_to_app</i>
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Container (initially hidden) -->
+  <div id="quiz-container" class="container center-align" style="display: none;">
     <div id="quiz-container" class="center-align">
       <h1>Quiz de Finanzas Personales</h1>
       <div id="question-container" class="card-panel teal lighten-4"></div>
@@ -32,10 +50,14 @@
     </div>
   </div>
 
-  <!-- Cargar Three.js y el script de animación -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="quiz.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Your scripts -->
+  <script src="google-authentication.js" type="module"></script>
   <script src="background.js"></script>
+  <script src="quiz.js"></script>
 </body>
 </html>
